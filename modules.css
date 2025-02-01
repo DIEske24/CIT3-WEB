@@ -1,0 +1,187 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: white; /* White background */
+    color: #333; /* Dark grey text */
+}
+
+/* Navigation Bar */
+nav {
+    background: rgba(0, 0, 0, 0.8); /* Dark background */
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    z-index: 1000;
+    display: flex; /* Enable Flexbox */
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Align items vertically */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation List */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center list items */
+    align-items: center; /* Align items vertically */
+}
+
+/* Navigation List Item */
+nav ul li {
+    margin: 0 20px; /* Spacing between list items */
+}
+
+/* Navigation Links */
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff; /* White text */
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 30px; /* Rounded corners */
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background: #388e3c; /* Green background */
+    color: white;
+    box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+}
+/* Main Content Section */
+.modules {
+    text-align: center;
+    padding: 100px 20px 50px; /* More space for header */
+    margin-top: 70px; /* Offset from fixed navbar */
+}
+
+.modules h1 {
+    font-size: 40px;
+    color: #388e3c;
+    font-weight: 600;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.modules p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Grid Layout for Modules */
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.module-card {
+    background: white;
+    color: #388e3c;
+    padding: 25px;
+    border-radius: 15px; /* Rounder edges */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+    height: 100%;
+}
+
+.module-card:hover {
+    transform: translateY(-8px); /* Subtle hover effect */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.module-card h2 {
+    font-size: 24px;
+    color: #388e3c;
+    margin-bottom: 15px;
+}
+
+.module-card p {
+    font-size: 16px;
+    color: #555;
+    margin: 10px 0;
+}
+
+.module-card a {
+    display: inline-block;
+    background: #388e3c;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.module-card a:hover {
+    background: #2e7d32; /* Darker green */
+    transform: scale(1.05); /* Slight scaling on hover */
+    box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #388e3c;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modules h1 {
+        font-size: 32px;
+    }
+
+    .modules p {
+        font-size: 16px;
+    }
+
+    .module-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}

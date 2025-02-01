@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Sex Education</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="quiz.html" class="active">Quiz</a></li>
+            <li><a href="information.html">Information</a></li>
+            <li><a href="forum.html">Forum</a></li>
+        </ul>
+    </nav>
+
+    <!-- Quiz Section -->
+    <section class="quiz">
+        <h2>Quiz: Test Your Knowledge</h2>
+        <form id="quizForm">
+            <label>What is consent?</label><br>
+            <input type="radio" name="question1" value="a"> A mutual agreement between two people.<br>
+            <input type="radio" name="question1" value="b"> A single person decides for both.<br>
+            <input type="radio" name="question1" value="c"> It is not necessary in any situation.<br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quizResult"></div>
+    </section>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answer = document.querySelector('input[name="question1"]:checked');
+            if (answer) {
+                const result = answer.value === 'a' ? "Correct!" : "Try again.";
+                document.getElementById('quizResult').innerText = result;
+            } else {
+                document.getElementById('quizResult').innerText = "Please select an answer.";
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>Group 6</p>
+    </footer>
+</body>
+</html>
