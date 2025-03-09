@@ -4,29 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Sex Education</title>
-    <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="modules.html">Modules</a></li>
-            <li><a href="quiz.html" class="active">Quiz</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="forum.html">Forum</a></li>
-        </ul>
-    </nav>
-
-    <!-- Quiz Section -->
     <section class="quiz">
         <h2>Quiz: Test Your Knowledge</h2>
         <form id="quizForm">
-            <label>What is consent?</label><br>
+            <label>1. What is consent?</label><br>
             <input type="radio" name="question1" value="a"> A mutual agreement between two people.<br>
             <input type="radio" name="question1" value="b"> A single person decides for both.<br>
             <input type="radio" name="question1" value="c"> It is not necessary in any situation.<br><br>
+
+            <label>2. Which of the following is NOT a form of contraception?</label><br>
+            <input type="radio" name="question2" value="a"> Birth control pills.<br>
+            <input type="radio" name="question2" value="b"> Vasectomy.<br>
+            <input type="radio" name="question2" value="c"> Antibiotics.<br><br>
+
+            <label>3. Can you still get an STI even if you use a condom?</label><br>
+            <input type="radio" name="question3" value="a"> Yes, but it reduces risk.<br>
+            <input type="radio" name="question3" value="b"> No, condoms prevent all STIs.<br>
+            <input type="radio" name="question3" value="c"> Only if the condom breaks.<br><br>
+
+            <label>4. How often should women have a Pap smear test?</label><br>
+            <input type="radio" name="question4" value="a"> Every year.<br>
+            <input type="radio" name="question4" value="b"> Every 3-5 years.<br>
+            <input type="radio" name="question4" value="c"> Only when symptoms appear.<br><br>
 
             <button type="submit">Submit</button>
         </form>
@@ -36,13 +50,20 @@
     <script>
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const answer = document.querySelector('input[name="question1"]:checked');
-            if (answer) {
-                const result = answer.value === 'a' ? "Correct!" : "Try again.";
-                document.getElementById('quizResult').innerText = result;
-            } else {
-                document.getElementById('quizResult').innerText = "Please select an answer.";
+            const answers = {
+                question1: 'a',
+                question2: 'c',
+                question3: 'a',
+                question4: 'b'
+            };
+            let score = 0;
+            for (const [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
             }
+            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
         });
     </script>
 </body>
