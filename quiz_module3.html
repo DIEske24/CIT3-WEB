@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Module 3: Consent & Boundaries</title>
+    <link rel="stylesheet" href="qmodule.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz_module3.html" class="active">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="quiz">
+        <h2>Quiz - Consent & Boundaries</h2>
+        <form id="quizForm">
+            <label>1. What is a key aspect of consent?</label><br>
+            <input type="radio" name="question1" value="a"> It must be freely given and can be withdrawn at any time.<br>
+            <input type="radio" name="question1" value="b"> It is only necessary in legal documents.<br>
+            <input type="radio" name="question1" value="c"> If someone remains silent, it means they consent.<br><br>
+
+            <label>2. What is an example of a healthy boundary?</label><br>
+            <input type="radio" name="question2" value="a"> Saying "no" when you feel uncomfortable.<br>
+            <input type="radio" name="question2" value="b"> Allowing others to pressure you.<br>
+            <input type="radio" name="question2" value="c"> Ignoring your own feelings to please others.<br><br>
+
+            <label>3. What is coercion?</label><br>
+            <input type="radio" name="question3" value="a"> A way to convince someone respectfully.<br>
+            <input type="radio" name="question3" value="b"> Pressuring or manipulating someone into agreeing to something.<br>
+            <input type="radio" name="question3" value="c"> A form of legal agreement.<br><br>
+
+            <label>4. How can you respect someone’s boundaries?</label><br>
+            <input type="radio" name="question4" value="a"> By listening and accepting their limits.<br>
+            <input type="radio" name="question4" value="b"> By convincing them to change their boundaries.<br>
+            <input type="radio" name="question4" value="c"> By assuming what they are comfortable with.<br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quizResult"></div>
+    </section>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = {
+                question1: 'a',
+                question2: 'a',
+                question3: 'b',
+                question4: 'a'
+            };
+            let score = 0;
+            for (const [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
+            }
+            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+        });
+    </script>
+</body>
+</html>

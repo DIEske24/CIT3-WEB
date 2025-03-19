@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Module 5: Healthy Relationships</title>
+    <link rel="stylesheet" href="qmodule.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz_module5.html" class="active">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="quiz">
+        <h2>Quiz - Healthy Relationships</h2>
+        <form id="quizForm">
+            <label>1. What is a key characteristic of a healthy relationship?</label><br>
+            <input type="radio" name="question1" value="a"> Mutual respect and trust.<br>
+            <input type="radio" name="question1" value="b"> Controlling behavior.<br>
+            <input type="radio" name="question1" value="c"> Lack of communication.<br><br>
+
+            <label>2. What is a red flag in a relationship?</label><br>
+            <input type="radio" name="question2" value="a"> Open and honest communication.<br>
+            <input type="radio" name="question2" value="b"> Constant criticism and manipulation.<br>
+            <input type="radio" name="question2" value="c"> Respecting personal boundaries.<br><br>
+
+            <label>3. How should conflicts be resolved in a healthy relationship?</label><br>
+            <input type="radio" name="question3" value="a"> Through open communication and compromise.<br>
+            <input type="radio" name="question3" value="b"> By ignoring the issue.<br>
+            <input type="radio" name="question3" value="c"> By using manipulation to win the argument.<br><br>
+
+            <label>4. What is an example of emotional abuse in a relationship?</label><br>
+            <input type="radio" name="question4" value="a"> Encouraging personal growth.<br>
+            <input type="radio" name="question4" value="b"> Insulting or belittling a partner.<br>
+            <input type="radio" name="question4" value="c"> Supporting each other's goals.<br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quizResult"></div>
+    </section>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = {
+                question1: 'a',
+                question2: 'b',
+                question3: 'a',
+                question4: 'b'
+            };
+            let score = 0;
+            for (const [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
+            }
+            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+        });
+    </script>
+</body>
+</html>

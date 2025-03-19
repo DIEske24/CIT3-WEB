@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Module 1: Introduction to Sex Education</title>
+    <link rel="stylesheet" href="qmodule.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz_module1.html" class="active">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="quiz">
+        <h2>Quiz - Introduction to Sex Education</h2>
+        <form id="quizForm">
+            <label>1. What is the main goal of sex education?</label><br>
+            <input type="radio" name="question1" value="a"> To provide accurate information about sexual health and relationships.<br>
+            <input type="radio" name="question1" value="b"> To encourage early sexual activity.<br>
+            <input type="radio" name="question1" value="c"> To scare people about the dangers of sex.<br><br>
+
+            <label>2. Who is responsible for providing sex education?</label><br>
+            <input type="radio" name="question2" value="a"> Schools only.<br>
+            <input type="radio" name="question2" value="b"> Parents, schools, and communities.<br>
+            <input type="radio" name="question2" value="c"> Friends and media.<br><br>
+
+            <label>3. Why is it important to talk about puberty in sex education?</label><br>
+            <input type="radio" name="question3" value="a"> To help individuals understand bodily changes and emotional development.<br>
+            <input type="radio" name="question3" value="b"> To make young people uncomfortable.<br>
+            <input type="radio" name="question3" value="c"> To encourage teens to start dating early.<br><br>
+
+            <label>4. What is a common myth about sex education?</label><br>
+            <input type="radio" name="question4" value="a"> It encourages responsible decision-making.<br>
+            <input type="radio" name="question4" value="b"> It promotes reckless behavior.<br>
+            <input type="radio" name="question4" value="c"> It has no effect on behavior.<br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quizResult"></div>
+    </section>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = {
+                question1: 'a',
+                question2: 'b',
+                question3: 'a',
+                question4: 'a'
+            };
+            let score = 0;
+            for (const [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
+            }
+            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+        });
+    </script>
+</body>
+</html>

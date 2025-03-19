@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Module 6: Sexual Orientation & Identity</title>
+    <link rel="stylesheet" href="qmodule.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz_module6.html" class="active">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="quiz">
+        <h2>Quiz - Sexual Orientation & Identity</h2>
+        <form id="quizForm">
+            <label>1. What does LGBTQ+ stand for?</label><br>
+            <input type="radio" name="question1" value="a"> A type of medical condition.<br>
+            <input type="radio" name="question1" value="b"> A spectrum of sexual orientations and gender identities.<br>
+            <input type="radio" name="question1" value="c"> A new diet trend.<br><br>
+
+            <label>2. What is the difference between gender identity and gender expression?</label><br>
+            <input type="radio" name="question2" value="a"> Gender identity is internal, while gender expression is external.<br>
+            <input type="radio" name="question2" value="b"> They are the same thing.<br>
+            <input type="radio" name="question2" value="c"> Gender expression is only about clothing choices.<br><br>
+
+            <label>3. How can you support LGBTQ+ individuals?</label><br>
+            <input type="radio" name="question3" value="a"> By respecting their identities and using inclusive language.<br>
+            <input type="radio" name="question3" value="b"> By telling them they should change.<br>
+            <input type="radio" name="question3" value="c"> By avoiding conversations about gender and identity.<br><br>
+
+            <label>4. What is an example of gender identity?</label><br>
+            <input type="radio" name="question4" value="a"> Male, female, non-binary, genderfluid.<br>
+            <input type="radio" name="question4" value="b"> Wearing pants instead of skirts.<br>
+            <input type="radio" name="question4" value="c"> Preferring blue over pink.<br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quizResult"></div>
+    </section>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = {
+                question1: 'b',
+                question2: 'a',
+                question3: 'a',
+                question4: 'a'
+            };
+            let score = 0;
+            for (const [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
+            }
+            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Module 4: Safe Sex Practices</title>
+    <link rel="stylesheet" href="qmodule.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz_module4.html" class="active">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="quiz">
+        <h2>Quiz - Safe Sex Practices</h2>
+        <form id="quizForm">
+            <label>1. What is the most effective way to prevent STIs?</label><br>
+            <input type="radio" name="question1" value="a"> Regular hand washing.<br>
+            <input type="radio" name="question1" value="b"> Using condoms consistently and correctly.<br>
+            <input type="radio" name="question1" value="c"> Avoiding sexual education.<br><br>
+
+            <label>2. What is an example of a long-term contraceptive?</label><br>
+            <input type="radio" name="question2" value="a"> Birth control pills.<br>
+            <input type="radio" name="question2" value="b"> IUD (Intrauterine Device).<br>
+            <input type="radio" name="question2" value="c"> Condoms.<br><br>
+
+            <label>3. What is the purpose of an HPV vaccine?</label><br>
+            <input type="radio" name="question3" value="a"> To prevent pregnancy.<br>
+            <input type="radio" name="question3" value="b"> To protect against human papillomavirus (HPV), which can cause cancer.<br>
+            <input type="radio" name="question3" value="c"> To cure sexually transmitted infections.<br><br>
+
+            <label>4. Which method provides protection against both STIs and pregnancy?</label><br>
+            <input type="radio" name="question4" value="a"> Birth control pills.<br>
+            <input type="radio" name="question4" value="b"> Condoms.<br>
+            <input type="radio" name="question4" value="c"> Fertility tracking.<br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div id="quizResult"></div>
+    </section>
+
+    <script>
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const answers = {
+                question1: 'b',
+                question2: 'b',
+                question3: 'b',
+                question4: 'b'
+            };
+            let score = 0;
+            for (const [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected && selected.value === value) {
+                    score++;
+                }
+            }
+            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+        });
+    </script>
+</body>
+</html>

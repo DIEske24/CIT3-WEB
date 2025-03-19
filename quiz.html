@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Sex Education</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="quiz.css">
 </head>
 <body>
     <header>
@@ -20,51 +20,17 @@
     </header>
 
     <section class="quiz">
-        <h2>Quiz: Test Your Knowledge</h2>
-        <form id="quizForm">
-            <label>1. What is consent?</label><br>
-            <input type="radio" name="question1" value="a"> A mutual agreement between two people.<br>
-            <input type="radio" name="question1" value="b"> A single person decides for both.<br>
-            <input type="radio" name="question1" value="c"> It is not necessary in any situation.<br><br>
+        <h2>Select a Quiz by Module</h2>
+        <p>Test your knowledge on each topic by selecting a module below:</p>
 
-            <label>2. Which of the following is NOT a form of contraception?</label><br>
-            <input type="radio" name="question2" value="a"> Birth control pills.<br>
-            <input type="radio" name="question2" value="b"> Vasectomy.<br>
-            <input type="radio" name="question2" value="c"> Antibiotics.<br><br>
-
-            <label>3. Can you still get an STI even if you use a condom?</label><br>
-            <input type="radio" name="question3" value="a"> Yes, but it reduces risk.<br>
-            <input type="radio" name="question3" value="b"> No, condoms prevent all STIs.<br>
-            <input type="radio" name="question3" value="c"> Only if the condom breaks.<br><br>
-
-            <label>4. How often should women have a Pap smear test?</label><br>
-            <input type="radio" name="question4" value="a"> Every year.<br>
-            <input type="radio" name="question4" value="b"> Every 3-5 years.<br>
-            <input type="radio" name="question4" value="c"> Only when symptoms appear.<br><br>
-
-            <button type="submit">Submit</button>
-        </form>
-        <div id="quizResult"></div>
+        <div class="quiz-grid">
+            <a href="quiz_module1.html" class="quiz-link">Module 1: Introduction to Sex Education</a>
+            <a href="quiz_module2.html" class="quiz-link">Module 2: Reproductive Health</a>
+            <a href="quiz_module3.html" class="quiz-link">Module 3: Consent & Boundaries</a>
+            <a href="quiz_module4.html" class="quiz-link">Module 4: Safe Sex Practices</a>
+            <a href="quiz_module5.html" class="quiz-link">Module 5: Healthy Relationships</a>
+            <a href="quiz_module6.html" class="quiz-link">Module 6: Sexual Orientation & Identity</a>
+        </div>
     </section>
-
-    <script>
-        document.getElementById('quizForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const answers = {
-                question1: 'a',
-                question2: 'c',
-                question3: 'a',
-                question4: 'b'
-            };
-            let score = 0;
-            for (const [key, value] of Object.entries(answers)) {
-                const selected = document.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === value) {
-                    score++;
-                }
-            }
-            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
-        });
-    </script>
 </body>
 </html>
