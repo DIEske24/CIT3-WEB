@@ -81,15 +81,24 @@ nav ul li a.active {
     font-size: 2.5rem;
     color: var(--primary);
     margin-bottom: 10px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .subtitle {
     font-size: 1.1rem;
     color: var(--text-light);
     margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
 }
 
-.new-topic-btn {
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.new-topic-btn, .contact-btn {
     background: var(--primary);
     color: white;
     border: none;
@@ -98,16 +107,18 @@ nav ul li a.active {
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
     gap: 8px;
 }
 
-.new-topic-btn:hover {
+.new-topic-btn:hover, .contact-btn:hover {
     background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+}
+
+.contact-btn {
+    background: #2196F3;
 }
 
 .forum-actions {
@@ -137,13 +148,13 @@ nav ul li a.active {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     font-size: 1rem;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
 }
 
 .search-box input:focus {
     border-color: var(--primary);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(56, 142, 60, 0.2);
+    box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.2);
 }
 
 .filter-dropdown select {
@@ -156,143 +167,12 @@ nav ul li a.active {
     min-width: 180px;
 }
 
-.contact-section {
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin-top: 40px;
-}
-
-.contact-section h2 {
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-weight: 500;
-    color: var(--text);
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-    padding: 12px 15px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
-}
-
-.form-group textarea {
-    min-height: 150px;
-    resize: vertical;
-}
-
-.submit-btn {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: var(--radius);
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.submit-btn:hover {
-    background: var(--primary-dark);
-}
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-}
-
-.modal {
-    background: white;
-    border-radius: var(--radius);
-    width: 100%;
-    max-width: 600px;
-    padding: 30px;
-    position: relative;
-    animation: modalFadeIn 0.3s;
-}
-
-@keyframes modalFadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: var(--text-light);
-}
-
-@media (max-width: 768px) {
-    .forum-actions {
-        flex-direction: column;
-    }
-    
-    .search-box {
-        max-width: 100%;
-    }
-    
-    nav ul li {
-        margin: 0 8px;
-    }
-    
-    nav ul li a {
-        font-size: 16px;
-        padding: 6px 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .forum-header h1 {
-        font-size: 2rem;
-    }
-    
-    .contact-section {
-        padding: 20px;
-    }
-}
-/* Previous CSS remains the same, just add these new styles */
-
 .discussion-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
     margin-bottom: 40px;
+    animation: fadeIn 1.5s ease-in-out;
 }
 
 .discussion-card {
@@ -300,16 +180,12 @@ nav ul li a.active {
     border-radius: var(--radius);
     padding: 20px;
     box-shadow: var(--shadow);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .discussion-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.discussion-card.featured {
-    border-left: 4px solid var(--primary);
 }
 
 .card-header {
@@ -424,12 +300,6 @@ nav ul li a.active {
     background: white;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.3s;
-}
-
-.pagination button:hover:not(:disabled) {
-    border-color: var(--primary);
-    color: var(--primary);
 }
 
 .pagination button.active {
@@ -438,35 +308,199 @@ nav ul li a.active {
     border-color: var(--primary);
 }
 
-.pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 15px;
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    z-index: 2000;
 }
 
-.contact-btn {
-    background: #2196F3;
+.modal {
+    background: white;
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: 600px;
+    padding: 30px;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
     color: white;
     border: none;
-    padding: 12px 24px;
     border-radius: var(--radius);
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
 }
 
-.contact-btn:hover {
-    background: #1976D2;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .forum-actions {
+        flex-direction: column;
+    }
+    
+    .search-box {
+        max-width: 100%;
+    }
+    
+    nav ul li {
+        margin: 0 8px;
+    }
+    
+    nav ul li a {
+        font-size: 16px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .forum-header h1 {
+        font-size: 2rem;
+    }
+}
+/* Previous styles remain exactly the same until the search-box section */
+
+.search-box {
+    flex: 1;
+    position: relative;
+    max-width: 500px;
+    animation: slideInLeft 0.8s ease-out;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+.search-box input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.2);
+    transform: scaleX(1.02);
+}
+
+.search-box input:focus + i {
+    color: var(--primary);
+    transform: translateY(-50%) scale(1.2);
+}
+
+.filter-dropdown {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.filter-dropdown select {
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    background-color: white;
+    cursor: pointer;
+    min-width: 180px;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+
+.filter-dropdown select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.2);
+    transform: translateY(-2px);
+}
+
+.filter-dropdown select:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Add these new animations to your existing keyframes */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
