@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum - Sex Education</title>
     <link rel="stylesheet" href="forum.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Navigation Bar -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -19,21 +19,97 @@
         </ul>
     </nav>
 
-    <!-- Forum Section -->
-    <section class="forum">
-        <div class="forum-wrapper">
-            <h2>Forum</h2>
-            <p>Join the conversation on sex education, ask questions, or share your experiences. Let's create a safe space for learning and open discussions!</p>
+    <main class="forum-container">
+        <header class="forum-header">
+            <h1>Community Discussions</h1>
+            <p class="subtitle">Join the conversation about sex education in a safe, respectful space</p>
+            <div class="action-buttons">
+                <button class="new-topic-btn"><i class="fas fa-plus"></i> New Discussion</button>
+                <button class="contact-btn"><i class="fas fa-envelope"></i> Contact Us</button>
+            </div>
+        </header>
 
-            <div class="forum-posts">
-                <h3>Recent Discussions:</h3>
-                <ul>
-                    <li><a href="#">How to talk about consent with a partner</a></li>
-                    <li><a href="#">The importance of sexual health education</a></li>
-                    <li><a href="#">Tips for safe sex practices</a></li>
-                </ul>
+        <div class="forum-actions">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search discussions...">
+            </div>
+            <div class="filter-dropdown">
+                <select>
+                    <option>All Topics</option>
+                    <option>Relationships</option>
+                    <option>Health</option>
+                    <option>Safety</option>
+                    <option>LGBTQ+</option>
+                </select>
             </div>
         </div>
-    </section>
+
+        <div class="discussion-list">
+            <!-- Discussion cards will be inserted here by JavaScript -->
+        </div>
+
+        <div class="pagination">
+            <button disabled><i class="fas fa-chevron-left"></i></button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </main>
+
+    <!-- New Discussion Modal -->
+    <div class="modal-overlay" id="discussionModal">
+        <div class="modal">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <h2>Start New Discussion</h2>
+            <form id="newDiscussionForm">
+                <div class="form-group">
+                    <label for="topic-title">Title</label>
+                    <input type="text" id="topic-title" placeholder="What's your question or topic?" required>
+                </div>
+                <div class="form-group">
+                    <label for="topic-category">Category</label>
+                    <select id="topic-category" required>
+                        <option value="">Select a category</option>
+                        <option value="Relationships">Relationships</option>
+                        <option value="Health">Health</option>
+                        <option value="Safety">Safety</option>
+                        <option value="LGBTQ+">LGBTQ+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="topic-content">Details</label>
+                    <textarea id="topic-content" placeholder="Provide more details about your discussion topic..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Post Discussion</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Us Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contact-name">Your Name</label>
+                    <input type="text" id="contact-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Your Email</label>
+                    <input type="email" id="contact-email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Your Message</label>
+                    <textarea id="contact-message" placeholder="Your private message..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="forum.js"></script>
 </body>
 </html>
