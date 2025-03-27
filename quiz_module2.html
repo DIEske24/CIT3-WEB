@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Module 2: Reproductive Health</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="qmodule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -12,58 +14,144 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="modules.html">Modules</a></li>
-                <li><a href="quiz_module2.html" class="active">Quiz</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
                 <li><a href="information.html">Information</a></li>
                 <li><a href="forum.html">Forum</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="quiz">
-        <h2>Quiz - Reproductive Health</h2>
+    <main class="quiz">
+        <h2><i class="fas fa-heartbeat"></i> Module 2: Reproductive Health</h2>
         <form id="quizForm">
-            <label>1. What is the function of the female reproductive system?</label><br>
-            <input type="radio" name="question1" value="a"> To produce sperm and testosterone.<br>
-            <input type="radio" name="question1" value="b"> To produce eggs and support pregnancy.<br>
-            <input type="radio" name="question1" value="c"> To regulate blood pressure.<br><br>
+            <div class="question">
+                <label>1. What is the function of the female reproductive system?</label>
+                <div>
+                    <input type="radio" id="q1a" name="question1" value="a">
+                    <label for="q1a">To produce sperm and testosterone</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1b" name="question1" value="b">
+                    <label for="q1b">To produce eggs and support pregnancy</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1c" name="question1" value="c">
+                    <label for="q1c">To regulate blood pressure</label>
+                </div>
+            </div>
 
-            <label>2. What hormone is primarily responsible for male reproductive health?</label><br>
-            <input type="radio" name="question2" value="a"> Estrogen.<br>
-            <input type="radio" name="question2" value="b"> Testosterone.<br>
-            <input type="radio" name="question2" value="c"> Progesterone.<br><br>
+            <div class="question">
+                <label>2. What hormone is primarily responsible for male reproductive health?</label>
+                <div>
+                    <input type="radio" id="q2a" name="question2" value="a">
+                    <label for="q2a">Estrogen</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2b" name="question2" value="b">
+                    <label for="q2b">Testosterone</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2c" name="question2" value="c">
+                    <label for="q2c">Progesterone</label>
+                </div>
+            </div>
 
-            <label>3. What is the purpose of a Pap smear test?</label><br>
-            <input type="radio" name="question3" value="a"> To test for pregnancy.<br>
-            <input type="radio" name="question3" value="b"> To detect cervical cancer and HPV.<br>
-            <input type="radio" name="question3" value="c"> To check hormone levels.<br><br>
+            <div class="question">
+                <label>3. What is the purpose of a Pap smear test?</label>
+                <div>
+                    <input type="radio" id="q3a" name="question3" value="a">
+                    <label for="q3a">To test for pregnancy</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3b" name="question3" value="b">
+                    <label for="q3b">To detect cervical cancer and HPV</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3c" name="question3" value="c">
+                    <label for="q3c">To check hormone levels</label>
+                </div>
+            </div>
 
-            <label>4. What is an example of a long-term contraceptive method?</label><br>
-            <input type="radio" name="question4" value="a"> Condoms.<br>
-            <input type="radio" name="question4" value="b"> Birth control pills.<br>
-            <input type="radio" name="question4" value="c"> IUD (Intrauterine Device).<br><br>
+            <div class="question">
+                <label>4. What is an example of a long-term contraceptive method?</label>
+                <div>
+                    <input type="radio" id="q4a" name="question4" value="a">
+                    <label for="q4a">Condoms</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4b" name="question4" value="b">
+                    <label for="q4b">Birth control pills</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4c" name="question4" value="c">
+                    <label for="q4c">IUD (Intrauterine Device)</label>
+                </div>
+            </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Answers <i class="fas fa-paper-plane"></i></button>
         </form>
         <div id="quizResult"></div>
-    </section>
+    </main>
 
     <script>
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const answers = {
                 question1: 'b',
                 question2: 'b',
                 question3: 'b',
                 question4: 'c'
             };
+            
             let score = 0;
-            for (const [key, value] of Object.entries(answers)) {
-                const selected = document.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === value) {
-                    score++;
+            let feedback = [];
+            
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected) {
+                    if (selected.value === correctAnswer) {
+                        score++;
+                        selected.parentElement.style.color = "#4CAF50";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-check"></i>';
+                    } else {
+                        selected.parentElement.style.color = "#F44336";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-times"></i>';
+                    }
                 }
             }
-            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+            
+            const percentage = Math.round((score / Object.keys(answers).length) * 100);
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+            
+            if (percentage >= 75) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Excellent work! You have a strong understanding of reproductive health.</p>
+                `;
+                resultDiv.style.background = "rgba(76, 175, 80, 0.2)";
+            } else if (percentage >= 50) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Good effort! Review the incorrect answers to improve your understanding.</p>
+                `;
+                resultDiv.style.background = "rgba(255, 193, 7, 0.2)";
+            } else {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Consider reviewing the module materials and trying again.</p>
+                `;
+                resultDiv.style.background = "rgba(244, 67, 54, 0.1)";
+            }
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.querySelector('button[type="submit"]').disabled = true;
         });
     </script>
 </body>

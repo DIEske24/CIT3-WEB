@@ -43,6 +43,30 @@ document.addEventListener('DOMContentLoaded', function() {
             comments: 19,
             likes: 35,
             featured: false
+        },
+        {
+            id: 4,
+            title: "Understanding LGBTQ+ relationships",
+            author: "Taylor Doe",
+            initials: "TD",
+            date: "5 days ago",
+            category: "LGBTQ+",
+            excerpt: "I'd like to learn more about LGBTQ+ relationships and how they differ from or are similar to heterosexual relationships. Any resources or personal experiences to share?",
+            comments: 31,
+            likes: 52,
+            featured: true
+        },
+        {
+            id: 5,
+            title: "Dealing with peer pressure",
+            author: "Casey Doe",
+            initials: "CD",
+            date: "1 day ago",
+            category: "Relationships",
+            excerpt: "How do you handle situations where friends or partners pressure you into things you're not comfortable with? Looking for practical advice.",
+            comments: 8,
+            likes: 23,
+            featured: false
         }
     ];
 
@@ -50,6 +74,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (newTopicBtn && discussionModal) {
         newTopicBtn.addEventListener('click', () => {
             discussionModal.style.display = 'flex';
+            setTimeout(() => {
+                discussionModal.classList.add('show');
+            }, 10);
             document.body.style.overflow = 'hidden';
         });
     }
@@ -58,6 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactBtn && contactModal) {
         contactBtn.addEventListener('click', () => {
             contactModal.style.display = 'flex';
+            setTimeout(() => {
+                contactModal.classList.add('show');
+            }, 10);
             document.body.style.overflow = 'hidden';
         });
     }
@@ -66,7 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
     closeModals.forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.modal-overlay').forEach(modal => {
-                modal.style.display = 'none';
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
             });
             document.body.style.overflow = '';
         });
@@ -76,7 +109,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.modal-overlay').forEach(modal => {
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = 'none';
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                }, 300);
                 document.body.style.overflow = '';
             }
         });
@@ -111,10 +147,27 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Reset form and close modal
             newDiscussionForm.reset();
-            discussionModal.style.display = 'none';
-            document.body.style.overflow = '';
+            discussionModal.classList.remove('show');
+            setTimeout(() => {
+                discussionModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
             
-            alert('Your discussion has been posted!');
+            // Show success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'success-message';
+            successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Your discussion has been posted!';
+            document.body.appendChild(successMsg);
+            
+            setTimeout(() => {
+                successMsg.classList.add('show');
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(successMsg);
+                    }, 300);
+                }, 3000);
+            }, 10);
         });
     }
 
@@ -123,10 +176,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message. We will contact you soon.');
+            
             contactForm.reset();
-            contactModal.style.display = 'none';
-            document.body.style.overflow = '';
+            contactModal.classList.remove('show');
+            setTimeout(() => {
+                contactModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+            
+            // Show success message
+            const successMsg = document.createElement('div');
+            successMsg.className = 'success-message';
+            successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your message. We will contact you soon.';
+            document.body.appendChild(successMsg);
+            
+            setTimeout(() => {
+                successMsg.classList.add('show');
+                setTimeout(() => {
+                    successMsg.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(successMsg);
+                    }, 300);
+                }, 3000);
+            }, 10);
         });
     }
 
@@ -136,9 +208,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (discussionList) {
             discussionList.innerHTML = '';
             
-            discussions.forEach(discussion => {
+            discussions.forEach((discussion, index) => {
                 const discussionCard = document.createElement('article');
                 discussionCard.className = `discussion-card ${discussion.featured ? 'featured' : ''}`;
+                discussionCard.style.animationDelay = `${index * 0.1}s`;
                 
                 discussionCard.innerHTML = `
                     <div class="card-header">
@@ -155,7 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                     </div>
                     <p class="excerpt">${discussion.excerpt}</p>
-                    <a href="#" class="read-more">Continue reading</a>
+                    <a href="#" class="read-more">Continue reading <i class="fas fa-arrow-right"></i></a>
                 `;
                 
                 discussionList.appendChild(discussionCard);
@@ -165,4 +238,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial render
     renderDiscussions();
+
+    // Add success message styles
+    const style = document.createElement('style');
+    style.textContent = `
+        .success-message {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3000;
+        }
+        .success-message.show {
+            opacity: 1;
+        }
+        .success-message i {
+            font-size: 1.2rem;
+        }
+    `;
+    document.head.appendChild(style);
 });

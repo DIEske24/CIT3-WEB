@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Module 1: Introduction to Sex Education</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="qmodule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -12,58 +14,151 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="modules.html">Modules</a></li>
-                <li><a href="quiz_module1.html" class="active">Quiz</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
                 <li><a href="information.html">Information</a></li>
                 <li><a href="forum.html">Forum</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="quiz">
-        <h2>Quiz - Introduction to Sex Education</h2>
+    <main class="quiz">
+        <h2><i class="fas fa-book-open"></i> Module 1: Introduction to Sex Education</h2>
         <form id="quizForm">
-            <label>1. What is the main goal of sex education?</label><br>
-            <input type="radio" name="question1" value="a"> To provide accurate information about sexual health and relationships.<br>
-            <input type="radio" name="question1" value="b"> To encourage early sexual activity.<br>
-            <input type="radio" name="question1" value="c"> To scare people about the dangers of sex.<br><br>
+            <div class="question">
+                <label>1. What is the main goal of sex education?</label>
+                <div>
+                    <input type="radio" id="q1a" name="question1" value="a">
+                    <label for="q1a">To provide accurate information about sexual health and relationships</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1b" name="question1" value="b">
+                    <label for="q1b">To encourage early sexual activity</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1c" name="question1" value="c">
+                    <label for="q1c">To scare people about the dangers of sex</label>
+                </div>
+            </div>
 
-            <label>2. Who is responsible for providing sex education?</label><br>
-            <input type="radio" name="question2" value="a"> Schools only.<br>
-            <input type="radio" name="question2" value="b"> Parents, schools, and communities.<br>
-            <input type="radio" name="question2" value="c"> Friends and media.<br><br>
+            <div class="question">
+                <label>2. Who is responsible for providing sex education?</label>
+                <div>
+                    <input type="radio" id="q2a" name="question2" value="a">
+                    <label for="q2a">Schools only</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2b" name="question2" value="b">
+                    <label for="q2b">Parents, schools, and communities</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2c" name="question2" value="c">
+                    <label for="q2c">Friends and media</label>
+                </div>
+            </div>
 
-            <label>3. Why is it important to talk about puberty in sex education?</label><br>
-            <input type="radio" name="question3" value="a"> To help individuals understand bodily changes and emotional development.<br>
-            <input type="radio" name="question3" value="b"> To make young people uncomfortable.<br>
-            <input type="radio" name="question3" value="c"> To encourage teens to start dating early.<br><br>
+            <div class="question">
+                <label>3. Why is it important to talk about puberty in sex education?</label>
+                <div>
+                    <input type="radio" id="q3a" name="question3" value="a">
+                    <label for="q3a">To help individuals understand bodily changes and emotional development</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3b" name="question3" value="b">
+                    <label for="q3b">To make young people uncomfortable</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3c" name="question3" value="c">
+                    <label for="q3c">To encourage teens to start dating early</label>
+                </div>
+            </div>
 
-            <label>4. What is a common myth about sex education?</label><br>
-            <input type="radio" name="question4" value="a"> It encourages responsible decision-making.<br>
-            <input type="radio" name="question4" value="b"> It promotes reckless behavior.<br>
-            <input type="radio" name="question4" value="c"> It has no effect on behavior.<br><br>
+            <div class="question">
+                <label>4. What is a common myth about sex education?</label>
+                <div>
+                    <input type="radio" id="q4a" name="question4" value="a">
+                    <label for="q4a">It encourages responsible decision-making</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4b" name="question4" value="b">
+                    <label for="q4b">It promotes reckless behavior</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4c" name="question4" value="c">
+                    <label for="q4c">It has no effect on behavior</label>
+                </div>
+            </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Answers <i class="fas fa-paper-plane"></i></button>
         </form>
         <div id="quizResult"></div>
-    </section>
+    </main>
 
     <script>
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Correct answers
             const answers = {
                 question1: 'a',
                 question2: 'b',
                 question3: 'a',
-                question4: 'a'
+                question4: 'b'
             };
+            
             let score = 0;
-            for (const [key, value] of Object.entries(answers)) {
-                const selected = document.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === value) {
-                    score++;
+            let feedback = [];
+            
+            // Check answers
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected) {
+                    if (selected.value === correctAnswer) {
+                        score++;
+                        selected.parentElement.style.color = "#4CAF50";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-check"></i>';
+                    } else {
+                        selected.parentElement.style.color = "#F44336";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-times"></i>';
+                    }
                 }
             }
-            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+            
+            // Calculate percentage
+            const percentage = Math.round((score / Object.keys(answers).length) * 100);
+            
+            // Display result
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+            
+            if (percentage >= 75) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Excellent work! You have a strong understanding of this topic.</p>
+                `;
+                resultDiv.style.background = "rgba(76, 175, 80, 0.2)";
+            } else if (percentage >= 50) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Good effort! Review the incorrect answers to improve your understanding.</p>
+                `;
+                resultDiv.style.background = "rgba(255, 193, 7, 0.2)";
+            } else {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Consider reviewing the module materials and trying again.</p>
+                `;
+                resultDiv.style.background = "rgba(244, 67, 54, 0.1)";
+            }
+            
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            // Disable form after submission
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.querySelector('button[type="submit"]').disabled = true;
         });
     </script>
 </body>

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Module 3: Consent & Boundaries</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="qmodule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -12,58 +14,143 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="modules.html">Modules</a></li>
-                <li><a href="quiz_module3.html" class="active">Quiz</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
                 <li><a href="information.html">Information</a></li>
                 <li><a href="forum.html">Forum</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="quiz">
-        <h2>Quiz - Consent & Boundaries</h2>
+    <main class="quiz">
+        <h2><i class="fas fa-handshake"></i> Module 3: Consent & Boundaries</h2>
         <form id="quizForm">
-            <label>1. What is a key aspect of consent?</label><br>
-            <input type="radio" name="question1" value="a"> It must be freely given and can be withdrawn at any time.<br>
-            <input type="radio" name="question1" value="b"> It is only necessary in legal documents.<br>
-            <input type="radio" name="question1" value="c"> If someone remains silent, it means they consent.<br><br>
+            <div class="question">
+                <label>1. What is a key aspect of consent?</label>
+                <div>
+                    <input type="radio" id="q1a" name="question1" value="a">
+                    <label for="q1a">It must be freely given and can be withdrawn at any time</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1b" name="question1" value="b">
+                    <label for="q1b">It is only necessary in legal documents</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1c" name="question1" value="c">
+                    <label for="q1c">If someone remains silent, it means they consent</label>
+                </div>
+            </div>
 
-            <label>2. What is an example of a healthy boundary?</label><br>
-            <input type="radio" name="question2" value="a"> Saying "no" when you feel uncomfortable.<br>
-            <input type="radio" name="question2" value="b"> Allowing others to pressure you.<br>
-            <input type="radio" name="question2" value="c"> Ignoring your own feelings to please others.<br><br>
+            <div class="question">
+                <label>2. What is an example of a healthy boundary?</label>
+                <div>
+                    <input type="radio" id="q2a" name="question2" value="a">
+                    <label for="q2a">Saying "no" when you feel uncomfortable</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2b" name="question2" value="b">
+                    <label for="q2b">Allowing others to pressure you</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2c" name="question2" value="c">
+                    <label for="q2c">Ignoring your own feelings to please others</label>
+                </div>
+            </div>
 
-            <label>3. What is coercion?</label><br>
-            <input type="radio" name="question3" value="a"> A way to convince someone respectfully.<br>
-            <input type="radio" name="question3" value="b"> Pressuring or manipulating someone into agreeing to something.<br>
-            <input type="radio" name="question3" value="c"> A form of legal agreement.<br><br>
+            <div class="question">
+                <label>3. What is coercion?</label>
+                <div>
+                    <input type="radio" id="q3a" name="question3" value="a">
+                    <label for="q3a">A way to convince someone respectfully</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3b" name="question3" value="b">
+                    <label for="q3b">Pressuring or manipulating someone into agreeing to something</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3c" name="question3" value="c">
+                    <label for="q3c">A form of legal agreement</label>
+                </div>
+            </div>
 
-            <label>4. How can you respect someone’s boundaries?</label><br>
-            <input type="radio" name="question4" value="a"> By listening and accepting their limits.<br>
-            <input type="radio" name="question4" value="b"> By convincing them to change their boundaries.<br>
-            <input type="radio" name="question4" value="c"> By assuming what they are comfortable with.<br><br>
+            <div class="question">
+                <label>4. How can you respect someone's boundaries?</label>
+                <div>
+                    <input type="radio" id="q4a" name="question4" value="a">
+                    <label for="q4a">By listening and accepting their limits</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4b" name="question4" value="b">
+                    <label for="q4b">By convincing them to change their boundaries</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4c" name="question4" value="c">
+                    <label for="q4c">By assuming what they are comfortable with</label>
+                </div>
+            </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Answers <i class="fas fa-paper-plane"></i></button>
         </form>
         <div id="quizResult"></div>
-    </section>
+    </main>
 
     <script>
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const answers = {
                 question1: 'a',
                 question2: 'a',
                 question3: 'b',
                 question4: 'a'
             };
+            
             let score = 0;
-            for (const [key, value] of Object.entries(answers)) {
-                const selected = document.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === value) {
-                    score++;
+            
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected) {
+                    if (selected.value === correctAnswer) {
+                        score++;
+                        selected.parentElement.style.color = "#4CAF50";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-check"></i>';
+                    } else {
+                        selected.parentElement.style.color = "#F44336";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-times"></i>';
+                    }
                 }
             }
-            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+            
+            const percentage = Math.round((score / Object.keys(answers).length) * 100);
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+            
+            if (percentage >= 75) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Excellent understanding of consent and boundaries!</p>
+                `;
+                resultDiv.style.background = "rgba(76, 175, 80, 0.2)";
+            } else if (percentage >= 50) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Good effort! These are important concepts to understand.</p>
+                `;
+                resultDiv.style.background = "rgba(255, 193, 7, 0.2)";
+            } else {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Consider reviewing the module materials about consent.</p>
+                `;
+                resultDiv.style.background = "rgba(244, 67, 54, 0.1)";
+            }
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.querySelector('button[type="submit"]').disabled = true;
         });
     </script>
 </body>

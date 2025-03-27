@@ -4,20 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum - Sex Education</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="forum.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="modules.html">Modules</a></li>
-            <li><a href="quiz.html">Quiz</a></li>
-            <li><a href="information.html">Information</a></li>
-            <li><a href="forum.html" class="active">Forum</a></li>
-        </ul>
-    </nav>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="modules.html">Modules</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="information.html">Information</a></li>
+                <li><a href="forum.html" class="active">Forum</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main class="forum-container">
         <header class="forum-header">
@@ -87,28 +89,28 @@
         </div>
     </div>
 
-  <!-- Contact Us Modal -->
-<div class="modal-overlay" id="contactModal">
-    <div class="modal">
-        <button class="close-modal"><i class="fas fa-times"></i></button>
-        <h2>Contact Us</h2>
-        <form id="contactForm">
-            <div class="form-group">
-                <label for="contact-name">Your Name</label>
-                <input type="text" id="contact-name" placeholder="Your Name" required>
-            </div>
-            <div class="form-group">
-                <label for="contact-email">Your Email</label>
-                <input type="email" id="contact-email" placeholder="Your Email" required>
-            </div>
-            <div class="form-group">
-                <label for="contact-message">Your Message</label>
-                <textarea id="contact-message" placeholder="Your message here..." required></textarea>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+    <!-- Contact Us Modal -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contact-name">Your Name</label>
+                    <input type="text" id="contact-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Your Email</label>
+                    <input type="email" id="contact-email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Your Message</label>
+                    <textarea id="contact-message" placeholder="Your message here..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
     </div>
-</div>
 
     <script src="forum.js"></script>
 </body>

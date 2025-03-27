@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modules - Sex Education</title>
     <link rel="stylesheet" href="modules.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -19,41 +20,69 @@
         </nav>
     </header>
 
-    <section class="modules">
-        <h1>Modules</h1>
-        <p>Explore in-depth knowledge on sexual health, relationships, and well-being.</p>
+    <main class="modules-container">
+        <section class="modules-header">
+            <h1><i class="fas fa-book-open"></i> Learning Modules</h1>
+            <p class="subtitle">Explore in-depth knowledge on sexual health, relationships, and well-being through our interactive modules.</p>
+        </section>
+
         <div class="module-grid">
-            <div class="module-card">
+            <div class="module-card" style="--delay: 0.1s">
+                <div class="module-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
                 <h2>1. Introduction to Sex Education</h2>
-                <p>Learn the importance of sex education, debunk myths, and understand its impact.</p>
-                <a href="module1.html">Start Module</a>
+                <p>Learn the importance of sex education, debunk myths, and understand its impact on personal development.</p>
+                <a href="module1.html" class="module-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="module-card">
+
+            <div class="module-card" style="--delay: 0.2s">
+                <div class="module-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
                 <h2>2. Reproductive Health</h2>
-                <p>Explore reproductive anatomy, menstrual health, contraception, and fertility.</p>
-                <a href="module2.html">Start Module</a>
+                <p>Explore reproductive anatomy, menstrual health, contraception methods, and fertility awareness.</p>
+                <a href="module2.html" class="module-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="module-card">
+
+            <div class="module-card" style="--delay: 0.3s">
+                <div class="module-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
                 <h2>3. Consent & Boundaries</h2>
-                <p>Understand verbal, non-verbal, and digital consent, as well as personal boundaries.</p>
-                <a href="module3.html">Start Module</a>
+                <p>Understand verbal, non-verbal, and digital consent, as well as establishing healthy personal boundaries.</p>
+                <a href="module3.html" class="module-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="module-card">
+
+            <div class="module-card" style="--delay: 0.4s">
+                <div class="module-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
                 <h2>4. Safe Sex Practices</h2>
-                <p>Discover contraceptive methods, STI prevention, and responsible sexual behavior.</p>
-                <a href="module4.html">Start Module</a>
+                <p>Discover contraceptive methods, STI prevention strategies, and responsible sexual behavior.</p>
+                <a href="module4.html" class="module-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="module-card">
+
+            <div class="module-card" style="--delay: 0.5s">
+                <div class="module-icon">
+                    <i class="fas fa-users"></i>
+                </div>
                 <h2>5. Healthy Relationships</h2>
-                <p>Learn about communication, recognizing toxic behaviors, and conflict resolution.</p>
-                <a href="module5.html">Start Module</a>
+                <p>Learn about effective communication, recognizing toxic behaviors, and healthy conflict resolution.</p>
+                <a href="module5.html" class="module-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
             </div>
-            <div class="module-card">
+
+            <div class="module-card" style="--delay: 0.6s">
+                <div class="module-icon">
+                    <i class="fas fa-rainbow"></i>
+                </div>
                 <h2>6. Sexual Orientation & Identity</h2>
-                <p>Gain insights into LGBTQ+ topics, gender identity, and inclusivity.</p>
-                <a href="module6.html">Start Module</a>
+                <p>Gain insights into LGBTQ+ topics, gender identity, and creating inclusive environments.</p>
+                <a href="module6.html" class="module-btn">Start Learning <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
-    </section>
+    </main>
+
+    <script src="modules.js"></script>
 </body>
 </html>

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Module 5: Healthy Relationships</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="qmodule.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -12,58 +14,143 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="modules.html">Modules</a></li>
-                <li><a href="quiz_module5.html" class="active">Quiz</a></li>
+                <li><a href="quiz.html" class="active">Quiz</a></li>
                 <li><a href="information.html">Information</a></li>
                 <li><a href="forum.html">Forum</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="quiz">
-        <h2>Quiz - Healthy Relationships</h2>
+    <main class="quiz">
+        <h2><i class="fas fa-users"></i> Module 5: Healthy Relationships</h2>
         <form id="quizForm">
-            <label>1. What is a key characteristic of a healthy relationship?</label><br>
-            <input type="radio" name="question1" value="a"> Mutual respect and trust.<br>
-            <input type="radio" name="question1" value="b"> Controlling behavior.<br>
-            <input type="radio" name="question1" value="c"> Lack of communication.<br><br>
+            <div class="question">
+                <label>1. What is a key characteristic of a healthy relationship?</label>
+                <div>
+                    <input type="radio" id="q1a" name="question1" value="a">
+                    <label for="q1a">Mutual respect and trust</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1b" name="question1" value="b">
+                    <label for="q1b">Controlling behavior</label>
+                </div>
+                <div>
+                    <input type="radio" id="q1c" name="question1" value="c">
+                    <label for="q1c">Lack of communication</label>
+                </div>
+            </div>
 
-            <label>2. What is a red flag in a relationship?</label><br>
-            <input type="radio" name="question2" value="a"> Open and honest communication.<br>
-            <input type="radio" name="question2" value="b"> Constant criticism and manipulation.<br>
-            <input type="radio" name="question2" value="c"> Respecting personal boundaries.<br><br>
+            <div class="question">
+                <label>2. What is a red flag in a relationship?</label>
+                <div>
+                    <input type="radio" id="q2a" name="question2" value="a">
+                    <label for="q2a">Open and honest communication</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2b" name="question2" value="b">
+                    <label for="q2b">Constant criticism and manipulation</label>
+                </div>
+                <div>
+                    <input type="radio" id="q2c" name="question2" value="c">
+                    <label for="q2c">Respecting personal boundaries</label>
+                </div>
+            </div>
 
-            <label>3. How should conflicts be resolved in a healthy relationship?</label><br>
-            <input type="radio" name="question3" value="a"> Through open communication and compromise.<br>
-            <input type="radio" name="question3" value="b"> By ignoring the issue.<br>
-            <input type="radio" name="question3" value="c"> By using manipulation to win the argument.<br><br>
+            <div class="question">
+                <label>3. How should conflicts be resolved in a healthy relationship?</label>
+                <div>
+                    <input type="radio" id="q3a" name="question3" value="a">
+                    <label for="q3a">Through open communication and compromise</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3b" name="question3" value="b">
+                    <label for="q3b">By ignoring the issue</label>
+                </div>
+                <div>
+                    <input type="radio" id="q3c" name="question3" value="c">
+                    <label for="q3c">By using manipulation to win the argument</label>
+                </div>
+            </div>
 
-            <label>4. What is an example of emotional abuse in a relationship?</label><br>
-            <input type="radio" name="question4" value="a"> Encouraging personal growth.<br>
-            <input type="radio" name="question4" value="b"> Insulting or belittling a partner.<br>
-            <input type="radio" name="question4" value="c"> Supporting each other's goals.<br><br>
+            <div class="question">
+                <label>4. What is an example of emotional abuse in a relationship?</label>
+                <div>
+                    <input type="radio" id="q4a" name="question4" value="a">
+                    <label for="q4a">Encouraging personal growth</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4b" name="question4" value="b">
+                    <label for="q4b">Insulting or belittling a partner</label>
+                </div>
+                <div>
+                    <input type="radio" id="q4c" name="question4" value="c">
+                    <label for="q4c">Supporting each other's goals</label>
+                </div>
+            </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Answers <i class="fas fa-paper-plane"></i></button>
         </form>
         <div id="quizResult"></div>
-    </section>
+    </main>
 
     <script>
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const answers = {
                 question1: 'a',
                 question2: 'b',
                 question3: 'a',
                 question4: 'b'
             };
+            
             let score = 0;
-            for (const [key, value] of Object.entries(answers)) {
-                const selected = document.querySelector(`input[name="${key}"]:checked`);
-                if (selected && selected.value === value) {
-                    score++;
+            
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected) {
+                    if (selected.value === correctAnswer) {
+                        score++;
+                        selected.parentElement.style.color = "#4CAF50";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-check"></i>';
+                    } else {
+                        selected.parentElement.style.color = "#F44336";
+                        selected.parentElement.innerHTML += ' <i class="fas fa-times"></i>';
+                    }
                 }
             }
-            document.getElementById('quizResult').innerText = `You scored ${score} out of 4!`;
+            
+            const percentage = Math.round((score / Object.keys(answers).length) * 100);
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+            
+            if (percentage >= 75) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Excellent! You understand what makes relationships healthy.</p>
+                `;
+                resultDiv.style.background = "rgba(76, 175, 80, 0.2)";
+            } else if (percentage >= 50) {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Good effort! Review the incorrect answers to improve.</p>
+                `;
+                resultDiv.style.background = "rgba(255, 193, 7, 0.2)";
+            } else {
+                resultDiv.innerHTML = `
+                    <h3><i class="fas fa-check-circle"></i> You scored ${score} out of ${Object.keys(answers).length} (${percentage}%)</h3>
+                    <p>Consider reviewing the healthy relationships module.</p>
+                `;
+                resultDiv.style.background = "rgba(244, 67, 54, 0.1)";
+            }
+            
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+            
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.disabled = true;
+            });
+            document.querySelector('button[type="submit"]').disabled = true;
         });
     </script>
 </body>

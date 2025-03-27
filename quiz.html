@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - Sex Education</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
@@ -19,18 +21,69 @@
         </nav>
     </header>
 
-    <section class="quiz">
-        <h2>Select a Quiz by Module</h2>
-        <p>Test your knowledge on each topic by selecting a module below:</p>
+    <main class="quiz-container">
+        <section class="quiz-header">
+            <h1>Test Your Knowledge</h1>
+            <p class="subtitle">Select a module to begin your quiz and assess your understanding</p>
+        </section>
 
         <div class="quiz-grid">
-            <a href="quiz_module1.html" class="quiz-link">Module 1: Introduction to Sex Education</a>
-            <a href="quiz_module2.html" class="quiz-link">Module 2: Reproductive Health</a>
-            <a href="quiz_module3.html" class="quiz-link">Module 3: Consent & Boundaries</a>
-            <a href="quiz_module4.html" class="quiz-link">Module 4: Safe Sex Practices</a>
-            <a href="quiz_module5.html" class="quiz-link">Module 5: Healthy Relationships</a>
-            <a href="quiz_module6.html" class="quiz-link">Module 6: Sexual Orientation & Identity</a>
+            <a href="quiz_module1.html" class="quiz-card" style="--delay: 0.1s">
+                <div class="quiz-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Module 1: Introduction</h3>
+                <p>Basic concepts of sex education</p>
+                <span class="start-btn">Start Quiz <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="quiz_module2.html" class="quiz-card" style="--delay: 0.2s">
+                <div class="quiz-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h3>Module 2: Reproductive Health</h3>
+                <p>Anatomy and physiology</p>
+                <span class="start-btn">Start Quiz <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="quiz_module3.html" class="quiz-card" style="--delay: 0.3s">
+                <div class="quiz-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Module 3: Consent & Boundaries</h3>
+                <p>Understanding personal limits</p>
+                <span class="start-btn">Start Quiz <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="quiz_module4.html" class="quiz-card" style="--delay: 0.4s">
+                <div class="quiz-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Module 4: Safe Sex Practices</h3>
+                <p>Contraception and protection</p>
+                <span class="start-btn">Start Quiz <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="quiz_module5.html" class="quiz-card" style="--delay: 0.5s">
+                <div class="quiz-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Module 5: Healthy Relationships</h3>
+                <p>Building positive connections</p>
+                <span class="start-btn">Start Quiz <i class="fas fa-arrow-right"></i></span>
+            </a>
+
+            <a href="quiz_module6.html" class="quiz-card" style="--delay: 0.6s">
+                <div class="quiz-icon">
+                    <i class="fas fa-rainbow"></i>
+                </div>
+                <h3>Module 6: Sexual Identity</h3>
+                <p>Gender and orientation</p>
+                <span class="start-btn">Start Quiz <i class="fas fa-arrow-right"></i></span>
+            </a>
         </div>
-    </section>
+    </main>
+
+    <script src="quiz.js"></script>
 </body>
 </html>
